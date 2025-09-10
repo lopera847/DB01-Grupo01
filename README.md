@@ -1,1 +1,6 @@
-# Dise-o-de-una-base-de-datos-en-el-Modelo-E-R-y-relacional
+# Grupo 01
+Jhon Alejandro Montaño Ortiz
+Juan Manuel Lopera Betancur
+Linda Carolina Guisao Florez
+Juan Pablo Agudelo Perez
+Edinson Stiben Sinitave Marin
