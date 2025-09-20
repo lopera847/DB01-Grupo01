@@ -1,4 +1,4 @@
-# Bases de datos 1 | Grupo 06
+# Bases de datos 1 | Grupo 01
 
 **Miembros:**
 
