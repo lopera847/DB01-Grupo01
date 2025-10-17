@@ -4,7 +4,6 @@
 
 - **Jhon Alejandro Montaño Ortiz** (Líder)  
 - Juan Manuel Lopera Betancur  
-- Linda Carolina Guisao Flórez  
 - Juan Pablo Agudelo Pérez  
 - Edinson Stiben Sinitave Marín  
 
@@ -28,9 +27,15 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 
 ├── Tarea-03
 
-│ └── (Pendiente de desarrollo)
+│ ├── 20252-PA-et0057-tia3-equipo-01-informe.docx
 
-│
+│ ├── 20252-PA-et0057-tia3-equipo-01-normalizacion-dd.xlsx
+
+│├── 20252-PA-et0057-tia3-equipo-01-video
+
+│└── README.md
+
+
 
 ├── Tarea-05
 
@@ -57,7 +62,12 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 
 
 ### 🔹 Tarea 03
-(Pendiente de desarrollo)
+- Desarrollo de la base de datos **“hce_antioquia”** para el servicio de hospitalización del Departamento de Antioquia.  
+- Aplicación de las **formas normales (1FN, 2FN, 3FN)**.  
+- Creación del **Diccionario de Datos Genérico**.  
+- Entregables: Informe, hoja de cálculo y video de sustentación.  
+
+👉 Ver detalle en [Tarea-03/README.md](./Tarea-03/README.md)  
 
 ### 🔹 Tarea 05
 (Pendiente de desarrollo)
