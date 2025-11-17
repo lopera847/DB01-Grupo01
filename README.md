@@ -23,7 +23,7 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 
 │ └── README.md
 
-│
+
 
 ├── Tarea-03
 
@@ -39,9 +39,17 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 
 ├── Tarea-05
 
-│ └── (Pendiente de desarrollo)
+│ ├── 20252-PA-et0057-tia5-DDL-equipo-01-informe.docx
 
-│
+│ ├── 20252-PA-et0057-tia5-DDL-equipo-01-resultados.xlsx
+
+│ ├── 20252-PA-et0057-tia5-DDL-equipo-01-scripts-DDL-Creacion.sql
+
+│ ├── 20252-PA-et0057-tia5-DDL-equipo-01-scripts-DDL-Modificacion.sql
+
+│ ├── 20252-PA-et0057-tia5-DDL-equipo-01-enlace-video.txt
+
+│ └── README.md
 
 ├── Tarea-06
 
@@ -69,8 +77,17 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 
 👉 Ver detalle en [Tarea-03/README.md](./Tarea-03/README.md)  
 
-### 🔹 Tarea 05
-(Pendiente de desarrollo)
+### 🔹 **Tarea 05 – Implementación Base de Datos: Modelo Físico (DDL) (TIA5)**
+- Corrección del Diagrama ER y proceso de normalización.  
+- Construcción del Modelo Físico.  
+- Inventario de tablas definitivo.  
+- Diccionario de Datos Físico.  
+- Scripts DDL:
+  - Creación de tablas  
+  - Modificación de tablas  
+- Informe y enlace del video de sustentación.  
+
+👉 Ver detalle en [Tarea 05/README.md](./Tarea%2005/README.md)
 
 ### 🔹 Tarea 06
 (Pendiente de desarrollo)
