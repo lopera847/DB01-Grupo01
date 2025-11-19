@@ -101,7 +101,7 @@ Archivo entregable:
 
 Archivo entregable:  
 **20252-PA-et0057-tia5-DDL-equipo-01-enlace-video.txt**  
-*(Solo enlace, NO subir el video al repositorio)*
+
 
 ---
 
