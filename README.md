@@ -87,7 +87,7 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
   - Modificación de tablas  
 - Informe y enlace del video de sustentación.  
 
-👉 Ver detalle en [Tarea 05/README.md](./Tarea%2005/README.md)
+👉 Ver detalle en [Tarea 05/README.md](./Tarea%205/README.md)
 
 ### 🔹 Tarea 06
 (Pendiente de desarrollo)
