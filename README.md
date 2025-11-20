@@ -75,7 +75,7 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 - Creación del **Diccionario de Datos Genérico**.  
 - Entregables: Informe, hoja de cálculo y video de sustentación.  
 
-👉 Ver detalle en [Tarea-03/README.md](./Tarea-03/README.md)  
+👉 Ver detalle en [Tarea 2/README.md](./Tarea%203/README.md)  
 
 ### 🔹 **Tarea 05 – Implementación Base de Datos: Modelo Físico (DDL) (TIA5)**
 - Corrección del Diagrama ER y proceso de normalización.  
