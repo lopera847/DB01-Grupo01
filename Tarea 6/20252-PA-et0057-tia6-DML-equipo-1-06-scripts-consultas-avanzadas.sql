@@ -3,9 +3,9 @@
 -- SCRIPTS DE CONSULTAS AVANZADAS (SELECT con JOIN)
 --
 -- Miembros del grupo
---
---
---
+-- Jhon Alejandro Montaño Ortiz
+-- Juan Lopera
+-- Pablo Agudelo
 
 --
 --
