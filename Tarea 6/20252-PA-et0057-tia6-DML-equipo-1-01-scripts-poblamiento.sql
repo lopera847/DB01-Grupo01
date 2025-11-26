@@ -330,6 +330,74 @@ INSERT INTO especialidad_medico (id_medico, id_especialidad) VALUES
 
 ALTER SEQUENCE especialidad_medico_id_especialidad_medico_seq RESTART WITH 1;
 
+-- VISITAS
+SELECT 
+    (SELECT COUNT(*) FROM paciente) as total_pacientes,
+    (SELECT COUNT(*) FROM visitante) as total_visitantes;
+
+-- Insertar 10 registros de visitas
+INSERT INTO visita (id_paciente, id_visitante, fecha_visita, relacion, observaciones) VALUES
+
+-- Visita 1: Padre visitando a su hijo
+(1, 1, '2024-01-11 10:30:00', 'Padre', 'Visita de control post-operatorio. Paciente estable.'),
+
+-- Visita 2: Madre visitando a su hija
+(3, 2, '2024-01-16 15:45:00', 'Madre', 'Trajo medicamentos y alimentos especiales. Paciente con buen ánimo.'),
+
+-- Visita 3: Esposa visitando a su esposo
+(5, 5, '2024-01-21 14:20:00', 'Esposa', 'Visita de acompañamiento. Paciente en recuperación favorable.'),
+
+-- Visita 4: Hermana visitando a su hermano
+(8, 3, '2024-02-02 11:15:00', 'Hermana', 'Control de evolución. Trajo ropa y artículos personales.'),
+
+-- Visita 5: Amiga visitando a paciente
+(12, 7, '2024-02-15 16:30:00', 'Amiga', 'Visita de apoyo emocional. Compañía durante terapia.'),
+
+-- Visita 6: Hijo visitando a su padre
+(15, 6, '2024-03-08 09:45:00', 'Hijo', 'Visita familiar. Coordinación de cuidados post-alta.'),
+
+-- Visita 7: Primo visitando a familiar
+(18, 8, '2024-04-20 13:10:00', 'Primo', 'Visita sorpresa. Paciente con buena evolución clínica.'),
+
+-- Visita 8: Tía visitando a sobrino
+(20, 9, '2024-05-12 10:00:00', 'Tía', 'Acompañamiento durante procedimiento médico.'),
+
+-- Visita 9: Sobrino visitando a tío
+(22, 10, '2024-06-25 15:20:00', 'Sobrino', 'Visita de cortesía. Revisión de estado general.'),
+
+-- Visita 10: Hermano visitando a hermana
+(25, 4, '2024-07-18 12:45:00', 'Hermano', 'Entrega de documentación médica. Coordinación con equipo tratante.');
+
+
+-- Verificar que existen tipos de procedimiento
+SELECT 
+    (SELECT COUNT(*) FROM tipo_procedimiento) as total_tipos_procedimiento;
+
+-- Insertar 15 registros de procedimientos médicos
+INSERT INTO procedimiento (id_tipo_procedimiento, nombre, descripcion) VALUES
+
+-- CIRUGÍAS (Tipo 1)
+(1, 'Apéndicectomía laparoscópica', 'Extracción del apéndice vermicular mediante técnica mínimamente invasiva'),
+(1, 'Colecistectomía abierta', 'Remoción de la vesícula biliar por incisión subcostal derecha'),
+(1, 'Herniorrafia inguinal', 'Reparación quirúrgica de hernia en región inguinal con malla'),
+(1, 'Artroplastia total de cadera', 'Reemplazo total de la articulación de la cadera con prótesis'),
+(1, 'Cirugía de columna lumbar', 'Descompresión y estabilización de vértebras lumbares'),
+
+-- CONSULTAS (Tipo 2)
+(2, 'Consulta de medicina general', 'Evaluación integral del estado de salud y manejo de patologías comunes'),
+(2, 'Consulta de seguimiento post-operatorio', 'Control evolutivo después de intervención quirúrgica'),
+(2, 'Consulta de valoración pre-anestésica', 'Evaluación de riesgo anestésico previo a procedimiento'),
+(2, 'Consulta de especialidad cardiológica', 'Valoración cardiovascular y manejo de enfermedades del corazón'),
+
+-- TERAPIAS (Tipo 3)
+(3, 'Fisioterapia respiratoria', 'Técnicas para mejorar la función pulmonar y capacidad respiratoria'),
+(3, 'Rehabilitación neurológica', 'Terapia para recuperación de funciones tras daño neurológico'),
+(3, 'Terapia de lenguaje y comunicación', 'Intervención para trastornos del habla y comunicación'),
+(3, 'Hidroterapia', 'Uso terapéutico del agua para rehabilitación musculoesquelética'),
+(3, 'Electroterapia analgésica', 'Aplicación de corrientes eléctricas para manejo del dolor'),
+(3, 'Terapia ocupacional', 'Entrenamiento para recuperación de actividades de la vida diaria');
+
+
 -- ======================
 -- FIN del script CORREGIDO (adaptado al DDL original)
 -- ======================
