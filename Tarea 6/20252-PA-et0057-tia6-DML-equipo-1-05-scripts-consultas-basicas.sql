@@ -3,8 +3,9 @@
 -- SCRIPTS DE CONSULTAS BÁSICAS (SELECT sin JOIN)
 --
 -- Miembros del grupo
---
---
+-- Jhon Alejandro Montaño Ortiz
+-- Juan Lopera
+-- Pablo Agudelo
 --
 
 -- CONSULTAS BÁSICAS - SUBSISTEMA DE HOSPITALIZACIÓN
