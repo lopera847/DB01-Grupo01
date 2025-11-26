@@ -50,9 +50,8 @@ SET fecha_nacimiento = '1985-07-12'
 WHERE id_paciente = 5;
 -- Justificación: Corrección por error tipográfico detectado en la historia.
 
-
 --
---MÉDICOS
+-- ACTUALIZACIONES EN TABLA MÉDICO
 --
 
 -- 1. Actualizar teléfono (médico 1)
@@ -85,9 +84,8 @@ SET tipo_documento = 'CE'
 WHERE id_medico = 5;
 -- Justificación: Migración de documento realizada por el profesional.
 
-
 --
--- ESPECIALIDADES MÉDICAS
+-- ACTUALIZACIONES EN TABLA ESPECIALIDAD
 --
 
 -- 1. Actualizar descripción (especialidad 1)
@@ -120,9 +118,8 @@ SET descripcion = 'Subespecialidad centrada en trastornos digestivos'
 WHERE id_especialidad = 5;
 -- Justificación: Precisión en el campo de estudio.
 
-
 --
--- ENFERMERAS
+-- ACTUALIZACIONES EN TABLA ENFERMERO
 --
 
 -- 1. Actualizar telefono (enfermero 1)
@@ -155,9 +152,8 @@ SET nombres = 'Laura Cristina'
 WHERE id_enfermero = 5;
 -- Justificación: Ajuste por nombre compuesto completo del profesional.
 
-
 --
--- HOSPITALES
+-- ACTUALIZACIONES EN TABLA HOSPITAL
 --
 
 -- 1. Actualizar telefono (hospital 1)
@@ -190,9 +186,8 @@ SET nit = '900123456-7'
 WHERE id_hospital = 5;
 -- Justificación: Corrección validada con DIAN.
 
-
 --
--- HOSPITALIZACIONES (tabla ingreso_cuarto)
+-- ACTUALIZACIONES EN TABLA INGRESO_CUARTO
 --
 
 -- 1. Actualizar fecha_salida (ingreso 1)
@@ -225,215 +220,150 @@ SET fecha_ingreso = '2025-02-03 09:30:00'
 WHERE id_ingreso_cuarto = 5;
 -- Justificación: Corrección del registro inicial (error de digitación).
 
+-- =====================================================
+-- SECCIÓN 2: ACTUALIZACIONES POR ÁREA
+-- =====================================================
 
 --
--- INSTRUCCIONES DELETE 
--- 
-
-
---
--- PACIENTES (Eliminar 5 registros)
+-- ACTUALIZACIONES REALIZADAS POR ENFERMERÍA
 --
 
-
-DELETE FROM paciente
-WHERE id_paciente IN (1,2,3,4,5)
-AND id_paciente NOT IN (SELECT id_paciente FROM visita)
-AND id_paciente NOT IN (SELECT id_paciente FROM visita_medica)
-AND id_paciente NOT IN (SELECT id_paciente FROM tarjeta_visita)
-AND id_paciente NOT IN (SELECT id_paciente FROM ingreso_cuarto);
--- Justificación: La eliminación se realiza únicamente si no existe ningún registro dependiente.
-
-
-
---
--- MÉDICOS (Eliminar 5 registros)
---
-
-
-DELETE FROM medico
-WHERE id_medico IN (1,2,3,4,5)
-AND id_medico NOT IN (SELECT id_medico FROM visita_medica)
-AND id_medico NOT IN (SELECT id_medico_responsable FROM ingreso_cuarto);
--- Justificación: Solo se eliminan médicos sin participación clínica registrada.
-
-
---
--- ESPECIALIDADES MÉDICAS (Eliminar 2 registros)
---
-
-
-DELETE FROM especialidad
-WHERE id_especialidad IN (1,2)
-AND id_especialidad NOT IN (SELECT id_especialidad FROM medico)
-AND id_especialidad NOT IN (SELECT id_especialidad FROM especialidad_medico);
--- Justificación: Eliminación válida solo si no hay médicos usando esa especialidad.
-
-
---
--- ENFERMERAS (Actualizar 10 campos del registro PACIENTES)
---
-
-
-UPDATE paciente 
-SET telefono = '3001112233' 
-WHERE id_paciente = 6;
+UPDATE paciente SET telefono = '3001112233' WHERE id_paciente = 10;
 -- Justificación: El paciente actualizó su número durante una llamada de seguimiento realizada por enfermería.
 
-UPDATE paciente 
-SET correo = 'pac6@correo.com' 
-WHERE id_paciente = 6;
+UPDATE paciente SET correo = 'pac10@correo.com' WHERE id_paciente = 10;
 -- Justificación: Corrección del correo electrónico reportado incorrecto por el personal de enfermería.
 
-UPDATE paciente 
-SET id_eps = 3 
-WHERE id_paciente = 6;
+UPDATE paciente SET id_eps = 3 WHERE id_paciente = 11;
 -- Justificación: Enfermería verificó un cambio reciente de EPS en el sistema de referencia.
 
-UPDATE paciente 
-SET id_ciudad = 4 
-WHERE id_paciente = 6;
+UPDATE paciente SET id_ciudad = 4 WHERE id_paciente = 12;
 -- Justificación: Durante la visita de control, se confirmó que el paciente se mudó a otra ciudad.
 
-UPDATE paciente 
-SET tipo_documento = 'CE' 
-WHERE id_paciente = 6;
+UPDATE paciente SET tipo_documento = 'CE' WHERE id_paciente = 13;
 -- Justificación: Enfermería detectó que el tipo de documento estaba mal registrado y lo actualizó.
 
-UPDATE paciente 
-SET fecha_nacimiento = '1991-07-11' 
-WHERE id_paciente = 6;
+UPDATE paciente SET fecha_nacimiento = '1991-07-11' WHERE id_paciente = 14;
 -- Justificación: Se encontró inconsistencia en la fecha de nacimiento tras revisión de la historia.
 
-UPDATE paciente 
-SET nombre = 'Laura' 
-WHERE id_paciente = 6;
+UPDATE paciente SET nombres = 'Laura Patricia' WHERE id_paciente = 15;
 -- Justificación: Corrección del nombre de pila según documento oficial validado por enfermería.
 
-UPDATE paciente 
-SET apellidos = 'Gómez Ramírez' 
-WHERE id_paciente = 6;
+UPDATE paciente SET apellidos = 'Gómez Ramírez' WHERE id_paciente = 16;
 -- Justificación: Ajuste del apellido completo tras verificación del registro civil.
 
-UPDATE paciente 
-SET sexo = 'F' 
-WHERE id_paciente = 6;
+UPDATE paciente SET sexo = 'F' WHERE id_paciente = 17;
 -- Justificación: Actualización solicitada debido a error en el registro inicial del paciente.
 
-UPDATE paciente 
-SET telefono = '3002223344' 
-WHERE id_paciente = 7;
+UPDATE paciente SET telefono = '3002223344' WHERE id_paciente = 18;
 -- Justificación: Enfermería registró el nuevo número de contacto en visita domiciliaria.
 
-
 --
--- HOSPITALES (Actualizar 10 campos del registro PACIENTES)
+-- ACTUALIZACIONES REALIZADAS POR HOSPITAL
 --
 
-
-UPDATE paciente 
-SET correo = 'pac7@correo.com' 
-WHERE id_paciente = 7;
+UPDATE paciente SET correo = 'pac19@correo.com' WHERE id_paciente = 19;
 -- Justificación: El hospital reportó que el correo anterior no correspondía al paciente.
 
-UPDATE paciente 
-SET telefono = '3114567788' 
-WHERE id_paciente = 7;
+UPDATE paciente SET telefono = '3114567788' WHERE id_paciente = 20;
 -- Justificación: El departamento de admisiones corrigió el contacto registrado.
 
-UPDATE paciente 
-SET id_eps = 2 
-WHERE id_paciente = 7;
+UPDATE paciente SET id_eps = 2 WHERE id_paciente = 21;
 -- Justificación: Ajuste debido al convenio activo entre el hospital y la EPS.
 
-UPDATE paciente 
-SET id_ciudad = 3 
-WHERE id_paciente = 7;
+UPDATE paciente SET id_ciudad = 3 WHERE id_paciente = 22;
 -- Justificación: Se actualizó la ciudad tras verificación en el proceso de admisión.
 
-UPDATE paciente 
-SET nombre = 'María Fernanda' 
-WHERE id_paciente = 7;
+UPDATE paciente SET nombres = 'María Fernanda' WHERE id_paciente = 23;
 -- Justificación: Rectificación del nombre conforme a la identificación presentada.
 
-UPDATE paciente 
-SET apellidos = 'Rojas Pérez' 
-WHERE id_paciente = 7;
+UPDATE paciente SET apellidos = 'Rojas Pérez' WHERE id_paciente = 24;
 -- Justificación: El hospital detectó error en el apellido compuesto del paciente.
 
-UPDATE paciente 
-SET fecha_nacimiento = '1985-06-21' 
-WHERE id_paciente = 7;
+UPDATE paciente SET fecha_nacimiento = '1985-06-21' WHERE id_paciente = 25;
 -- Justificación: Se corrigió la fecha tras revisar antecedentes médicos previos.
 
-UPDATE paciente 
-SET tipo_documento = 'CC' 
-WHERE id_paciente = 7;
+UPDATE paciente SET tipo_documento = 'CC' WHERE id_paciente = 26;
 -- Justificación: El paciente actualizó su documento durante la admisión.
 
-UPDATE paciente 
-SET correo = 'pac8@correo.com' 
-WHERE id_paciente = 8;
+UPDATE paciente SET correo = 'pac27@correo.com' WHERE id_paciente = 27;
 -- Justificación: El hospital registró el correo personal correcto del paciente.
 
-UPDATE paciente 
-SET telefono = '3025566678' 
-WHERE id_paciente = 8;
+UPDATE paciente SET telefono = '3025566678' WHERE id_paciente = 28;
 -- Justificación: Actualización del teléfono tras contacto directo con el hospital.
 
-
 --
--- HOSPITALIZACIONES (Actualizar 10 campos del registro PACIENTES)
+-- ACTUALIZACIONES DURANTE HOSPITALIZACIÓN
 --
 
-
-UPDATE paciente 
-SET id_ciudad = 6 
-WHERE id_paciente = 8;
+UPDATE paciente SET id_ciudad = 6 WHERE id_paciente = 29;
 -- Justificación: Durante la hospitalización, se registró nueva ciudad de residencia.
 
-UPDATE paciente 
-SET id_eps = 2 
-WHERE id_paciente = 8;
+UPDATE paciente SET id_eps = 2 WHERE id_paciente = 30;
 -- Justificación: La EPS confirmó cambio de cobertura durante el proceso de ingreso.
 
-UPDATE paciente 
-SET apellidos = 'Soto Ramírez' 
-WHERE id_paciente = 8;
+UPDATE paciente SET apellidos = 'Soto Ramírez' WHERE id_paciente = 31;
 -- Justificación: Corrección realizada en el área de hospitalización tras verificar el documento.
 
-UPDATE paciente 
-SET nombre = 'Ana Lucía' 
-WHERE id_paciente = 8;
+UPDATE paciente SET nombres = 'Ana Lucía' WHERE id_paciente = 32;
 -- Justificación: Se ajustó el nombre del paciente durante el registro de ingreso.
 
-UPDATE paciente 
-SET correo = 'analucia@correo.com' 
-WHERE id_paciente = 8;
+UPDATE paciente SET correo = 'analucia32@correo.com' WHERE id_paciente = 32;
 -- Justificación: Nuevo correo reportado para envío de informes clínicos.
 
-UPDATE paciente 
-SET telefono = '3001102200' 
-WHERE id_paciente = 8;
+UPDATE paciente SET telefono = '3001102200' WHERE id_paciente = 33;
 -- Justificación: Actualización del contacto para comunicaciones durante su estancia.
 
-UPDATE paciente 
-SET tipo_documento = 'CE' 
-WHERE id_paciente = 9;
+UPDATE paciente SET tipo_documento = 'CE' WHERE id_paciente = 34;
 -- Justificación: Se corrigió el tipo de documento en el momento de su hospitalización.
 
-UPDATE paciente 
-SET fecha_nacimiento = '1977-11-22' 
-WHERE id_paciente = 9;
+UPDATE paciente SET fecha_nacimiento = '1977-11-22' WHERE id_paciente = 35;
 -- Justificación: La fecha fue rectificada tras revisar registros previos del paciente.
 
-UPDATE paciente 
-SET sexo = 'O' 
-WHERE id_paciente = 9;
+UPDATE paciente SET sexo = 'O' WHERE id_paciente = 36;
 -- Justificación: Actualización conforme a información proporcionada por el paciente.
 
-UPDATE paciente 
-SET correo = 'pac9@correo.com' 
-WHERE id_paciente = 9;
+UPDATE paciente SET correo = 'pac37@correo.com' WHERE id_paciente = 37;
 -- Justificación: Contacto de correo actualizado para notificación de resultados clínicos.
+
+-- =====================================================
+-- SECCIÓN 3: INSERCIONES DE NUEVAS ESPECIALIDADES
+-- =====================================================
+
+-- En lugar de eliminar especialidades existentes, crear nuevas especialidades
+INSERT INTO especialidad (nombre, descripcion) VALUES 
+('Medicina Deportiva', 'Especialidad en tratamiento y prevención de lesiones deportivas'),
+('Genética Médica', 'Diagnóstico y manejo de enfermedades hereditarias'),
+('Medicina del Sueño', 'Especialidad en trastornos del sueño'),
+('Medicina Paliativa', 'Cuidados para pacientes con enfermedades terminales'),
+('Telemedicina', 'Atención médica a distancia mediante tecnologías de comunicación');
+
+-- =====================================================
+-- SECCIÓN 4: ELIMINACIONES (DELETE) CON VERIFICACIONES
+-- =====================================================
+
+--
+-- ELIMINACIÓN SEGURA DE PACIENTES
+--
+
+DELETE FROM paciente
+WHERE id_paciente IN (95,96,97,98,99)
+AND id_paciente NOT IN (SELECT id_paciente FROM visita_medica WHERE id_paciente IS NOT NULL)
+AND id_paciente NOT IN (SELECT id_paciente FROM tarjeta_visita WHERE id_paciente IS NOT NULL)
+AND id_paciente NOT IN (SELECT id_paciente FROM ingreso_cuarto WHERE id_paciente IS NOT NULL)
+AND id_paciente NOT IN (SELECT id_paciente FROM telefono WHERE id_paciente IS NOT NULL);
+-- Justificación: Eliminación segura de pacientes sin historial clínico registrado
+
+--
+-- ELIMINACIÓN SEGURA DE MÉDICOS
+--
+
+DELETE FROM medico
+WHERE id_medico IN (25,26,27,28,29)
+AND id_medico NOT IN (SELECT id_medico FROM visita_medica WHERE id_medico IS NOT NULL)
+AND id_medico NOT IN (SELECT id_medico_responsable FROM ingreso_cuarto WHERE id_medico_responsable IS NOT NULL)
+AND id_medico NOT IN (SELECT id_medico FROM especialidad_medico WHERE id_medico IS NOT NULL)
+AND id_medico NOT IN (SELECT id_medico FROM telefono WHERE id_medico IS NOT NULL);
+-- Justificación: Médicos sin actividad clínica registrada ni asignaciones
+
 
