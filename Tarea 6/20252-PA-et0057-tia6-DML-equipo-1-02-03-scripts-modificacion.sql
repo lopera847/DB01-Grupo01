@@ -2,10 +2,11 @@
 -- Tarea 6 - Parte #2 del Proyecto de Aula
 -- SCRIPTS DE MODIFICACIÓN DE LA BASE DE DATOS (UPDATE, DELETES)
 --
+
 -- Miembros del grupo
---
---
---
+-- 	Jhon Alejandro Montaño Ortiz
+--	Juan Lopera
+--	Pablo Agudelo
 
 --
 -- INSTRUCCIONES DE MODIFICACIÓN SOLICITADAS
