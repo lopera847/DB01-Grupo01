@@ -5,7 +5,6 @@
 - **Jhon Alejandro Montaño Ortiz** (Líder)  
 - Juan Manuel Lopera Betancur  
 - Juan Pablo Agudelo Pérez  
-- Edinson Stiben Sinitave Marín  
 
 ## Proposito del repositorio
 
@@ -51,9 +50,26 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 
 │ └── README.md
 
-├── Tarea-06
 
-│ └── (Pendiente de desarrollo)
+├── Tarea 06
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-informe.docx
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-scripts-poblamiento.sql
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-scripts-modificacion.sql
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-scripts-consultas-basicas.sql
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-scripts-consultas-avanzadas.sql
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-scripts-consultas-vista.sql
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-scripts-consultas-acid.sql
+
+│   ├── 20252-PA-et0057-tia6-DML-equipo-01-enlace-video.txt
+
+│   └── README.md
 
 
 ---
@@ -89,8 +105,17 @@ En él se organizan las tareas en carpetas independientes, cada una con sus resp
 
 👉 Ver detalle en [Tarea 05/README.md](./Tarea%205/README.md)
 
-### 🔹 Tarea 06
-(Pendiente de desarrollo)
+### 🔹 Tarea 06 – Manipulación de Datos: DML y ACID (TIA6)
+
+Poblamiento de la BD con INSERT.
+
+Sistema de manipulación: UPDATE, DELETE, SELECT.
+
+Consultas básicas, avanzadas, vistas y validación ACID.
+
+Informe, scripts y enlace al video.
+
+👉 Ver detalle en [Tarea 06/README.md](./Tarea%206/README.md)
 
 ---
 
