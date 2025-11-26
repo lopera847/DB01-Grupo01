@@ -58,6 +58,11 @@ CREATE TABLE eps (
   CONSTRAINT fk_eps_estado FOREIGN KEY (id_estado_eps) REFERENCES estado_eps(id_estado_eps) ON DELETE RESTRICT
 );
 
+CREATE TABLE estado_tarjeta (
+  id_estado_tarjeta INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL UNIQUE
+);
+
 CREATE TABLE hospital (
   id_hospital INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   nit VARCHAR(30) UNIQUE,
@@ -112,8 +117,13 @@ CREATE TABLE medicamento (
   dosis_sugerida VARCHAR(100)
 );
 
+CREATE TABLE diagnostico (
+  id_diagnostico INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  codigo VARCHAR(50) UNIQUE,
+  descripcion TEXT NOT NULL
+);
 
---Tablas que dependen de las anteriores
+-- Tablas que dependen de las anteriores
 --------------------------------------------------------------
 
 CREATE TABLE cuarto (
@@ -190,11 +200,6 @@ CREATE TABLE tarjeta_visita (
   CONSTRAINT fk_tarjeta_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE
 );
 
-CREATE TABLE estado_tarjeta (
-  id_estado_tarjeta INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  nombre VARCHAR(50) NOT NULL UNIQUE
-);
-
 CREATE TABLE telefono (
   id_telefono INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   id_tipo_telefono INTEGER,
@@ -243,12 +248,6 @@ CREATE TABLE visita_medica (
   CONSTRAINT fk_visita_medica_medico FOREIGN KEY (id_medico) REFERENCES medico(id_medico) ON DELETE RESTRICT
 );
 
-CREATE TABLE diagnostico (
-  id_diagnostico INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  codigo VARCHAR(50) UNIQUE,
-  descripcion TEXT NOT NULL
-);
-
 ALTER TABLE visita_medica
   ADD CONSTRAINT fk_visita_medica_diagnostico FOREIGN KEY (diagnostico_id) REFERENCES diagnostico(id_diagnostico) ON DELETE SET NULL;
 
@@ -266,5 +265,17 @@ CREATE TABLE prescripcion (
   fecha_prescripcion TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
   observaciones TEXT,
   CONSTRAINT fk_prescripcion_visita FOREIGN KEY (id_visita_medica) REFERENCES visita_medica(id_visita_medica) ON DELETE CASCADE
+);
+
+-- TABLA ENFERMERO 
+CREATE TABLE enfermero (
+  id_enfermero INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  tipo_documento VARCHAR(30),
+  numero_documento VARCHAR(50) UNIQUE,
+  nombres VARCHAR(150) NOT NULL,
+  apellidos VARCHAR(150) NOT NULL,
+  sexo CHAR(1) CHECK (sexo IN ('M','F','O')),
+  telefono VARCHAR(30),
+  correo VARCHAR(150)
 );
 
