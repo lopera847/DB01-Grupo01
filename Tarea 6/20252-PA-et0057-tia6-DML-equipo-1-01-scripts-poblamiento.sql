@@ -3,7 +3,9 @@
 -- SCRIPTS DE POBLAMIENTO DE LA BASE DE DATOS (INSERTS)
 --
 -- Miembros del grupo
---
+-- 	Jhon Alejandro Montaño Ortiz
+--	Juan Lopera
+--	Pablo Agudelo
 --
 -- Descripción: INSERTS corregidos para poblar la base de datos hce_antioquia
 -- Nota importante: Este script está **adaptado al DDL original** (antes de aplicar los scripts de modificación).
