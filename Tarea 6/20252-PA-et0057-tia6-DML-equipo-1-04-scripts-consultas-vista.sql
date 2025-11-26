@@ -3,9 +3,9 @@
 -- SCRIPTS DE CREACIÓN y CONSULTAS DE UNA VISTA 
 --
 -- Miembros del grupo
---
---
---
+-- 	Jhon Alejandro Montaño Ortiz
+--	Juan Lopera
+--	Pablo Agudelo
 
 --
 
