@@ -207,40 +207,191 @@ INSERT INTO medico (tipo_documento, numero_documento, nombres, apellidos, id_esp
 
 ALTER SEQUENCE medico_id_medico_seq RESTART WITH 1;
 
--- PACIENTES (98 pacientes)
--- 1-10 años: 10 registros
-INSERT INTO paciente (tipo_documento, numero_documento, nombres, apellidos, fecha_nacimiento, sexo, id_ciudad, id_eps, telefono, correo) VALUES
-('RC','300000001','Sebastián','Cruz','2018-06-12','M',1,1,'3102003001','sebastian.c@example.com'),
-('RC','300000002','Mateo','Gómez','2016-03-05','M',1,1,'3102003002','mateo.g@example.com'),
-('RC','300000003','Samuel','Herrera','2019-09-22','M',1,1,'3102003003','samuel.h@example.com'),
-('RC','300000004','Valentina','López','2017-11-01','F',1,1,'3102003004','valentina.l@example.com'),
-('RC','300000005','Camila','Martínez','2015-12-20','F',1,1,'3102003005','camila.m@example.com'),
-('RC','300000006','Isabella','Pérez','2018-02-10','F',1,1,'3102003006','isabella.p@example.com'),
-('RC','300000007','Daniel','González','2014-08-30','M',1,1,'3102003007','daniel.g@example.com'),
-('RC','300000008','Sofía','Ruiz','2019-04-15','F',1,1,'3102003008','sofia.r@example.com'),
-('RC','300000009','Lucas','Ramírez','2017-01-19','M',1,1,'3102003009','lucas.r@example.com'),
-('RC','300000010','Martina','Vargas','2016-05-25','F',1,1,'3102003010','martina.v@example.com');
+ALTER SEQUENCE ingreso_cuarto_id_ingreso_cuarto_seq RESTART WITH 1;
 
--- 11-20 años: 15 registros
-INSERT INTO paciente (tipo_documento, numero_documento, nombres, apellidos, fecha_nacimiento, sexo, id_ciudad, id_eps, telefono, correo) VALUES
-('CC','300000011','Julián','Soto','2006-02-10','M',2,1,'3102003011','julian.s@example.com'),
-('CC','300000012','Andrés','Morales','2008-07-21','M',2,1,'3102003012','andres.m@example.com'),
-('CC','300000013','Bruno','Castillo','2005-09-30','M',2,1,'3102003013','bruno.c@example.com'),
-('CC','300000014','Esteban','Ríos','2004-12-05','M',2,1,'3102003014','esteban.r@example.com'),
-('CC','300000015','Camilo','Márquez','2003-11-11','M',2,1,'3102003015','camilo.m@example.com'),
-('CC','300000016','María José','Herrera','2006-06-06','F',2,1,'3102003016','mariaj.h@example.com'),
-('CC','300000017','Sara','López','2007-03-03','F',2,1,'3102003017','sara.l@example.com'),
-('CC','300000018','Laura','Ramírez','2009-10-10','F',2,1,'3102003018','laura.r@example.com'),
-('CC','300000019','Nicole','Torres','2006-01-20','F',2,1,'3102003019','nicole.t@example.com'),
-('CC','300000020','María','González','2005-05-15','F',2,1,'3102003020','maria.g@example.com'),
-('CC','300000021','Diego','Pérez','2004-07-07','M',2,1,'3102003021','diego.p@example.com'),
-('CC','300000022','Nicolás','Vargas','2003-08-08','M',2,1,'3102003022','nicolas.v@example.com'),
-('CC','300000023','Adrián','Sánchez','2002-09-09','M',2,1,'3102003023','adrian.s@example.com'),
-('CC','300000024','Mía','Castaño','2006-11-11','F',2,1,'3102003024','mia.c@example.com'),
-('CC','300000025','Paula','Yáñez','2005-04-04','F',2,1,'3102003025','paula.y@example.com');
+-- Insertar 150 registros de ingresos distribuidos entre los 98 pacientes
+INSERT INTO ingreso_cuarto (id_paciente, id_cuarto, fecha_ingreso, fecha_salida, motivo_ingreso, id_medico_responsable) VALUES
 
--- Continuar con el resto de pacientes...
--- [Aquí irían las inserciones restantes de pacientes 26-98]
+-- Pacientes 1-10 (3 hospitalizaciones cada uno)
+(1, 1, '2024-01-10 08:30:00', '2024-01-15 14:00:00', 'Neumonía bacteriana', 1),
+(1, 3, '2024-03-05 10:15:00', '2024-03-12 11:30:00', 'Bronquitis aguda', 5),
+(1, 5, '2024-06-20 14:20:00', '2024-06-25 09:45:00', 'Control post-neumonía', 10),
+
+(2, 2, '2024-01-12 09:45:00', '2024-01-18 16:20:00', 'Fractura de tibia', 2),
+(2, 4, '2024-04-15 11:30:00', '2024-04-22 14:15:00', 'Rehabilitación post-fractura', 6),
+(2, 6, '2024-07-10 08:25:00', '2024-07-17 15:40:00', 'Retiro de yeso', 11),
+
+(3, 3, '2024-01-15 14:20:00', '2024-01-22 10:30:00', 'Apéndicitis aguda', 3),
+(3, 6, '2024-03-18 16:00:00', '2024-03-25 12:15:00', 'Infección post-operatoria', 7),
+(3, 8, '2024-07-10 08:45:00', '2024-07-15 15:20:00', 'Control quirúrgico', 12),
+
+(4, 4, '2024-01-18 11:15:00', '2024-01-25 13:40:00', 'Infección urinaria complicada', 4),
+(4, 7, '2024-05-22 13:30:00', '2024-05-29 10:25:00', 'Pielonefritis', 8),
+(4, 9, '2024-08-15 09:35:00', '2024-08-22 14:50:00', 'Control urológico', 13),
+
+(5, 5, '2024-01-20 09:30:00', '2024-01-27 16:20:00', 'Colecistitis', 5),
+(5, 9, '2024-04-10 15:45:00', '2024-04-17 11:35:00', 'Litiasis biliar', 9),
+(5, 11, '2024-08-05 10:20:00', '2024-08-12 14:50:00', 'Control digestivo', 14),
+
+(6, 6, '2024-01-22 16:10:00', '2024-01-29 12:30:00', 'Diabetes descompensada', 6),
+(6, 10, '2024-06-15 08:25:00', '2024-06-22 15:40:00', 'Retinopatía diabética', 10),
+(6, 12, '2024-09-12 11:15:00', '2024-09-19 13:25:00', 'Control endocrino', 15),
+
+(7, 7, '2024-01-25 13:15:00', '2024-02-01 09:45:00', 'Insuficiencia cardíaca', 7),
+(7, 12, '2024-05-30 11:50:00', '2024-06-06 14:15:00', 'Edema pulmonar', 11),
+(7, 14, '2024-08-25 16:30:00', '2024-09-01 10:55:00', 'Control cardiológico', 16),
+
+(8, 8, '2024-01-28 10:30:00', '2024-02-04 14:20:00', 'Asma severa', 8),
+(8, 13, '2024-03-25 14:45:00', '2024-04-01 10:10:00', 'Broncoespasmo', 12),
+(8, 15, '2024-07-18 09:15:00', '2024-07-25 16:30:00', 'Neumonía asmática', 17),
+
+(9, 9, '2024-02-01 08:00:00', '2024-02-08 12:00:00', 'Gastroenteritis aguda', 9),
+(9, 14, '2024-06-08 12:20:00', '2024-06-15 08:45:00', 'Deshidratación severa', 13),
+(9, 16, '2024-09-20 14:10:00', '2024-09-27 11:35:00', 'Control gastrointestinal', 18),
+
+(10, 10, '2024-02-03 15:45:00', '2024-02-10 11:30:00', 'Hernia discal', 10),
+(10, 16, '2024-04-12 07:30:00', '2024-04-19 13:15:00', 'Cirugía de columna', 14),
+(10, 18, '2024-08-20 14:00:00', NULL, 'Rehabilitación post-cirugía', 19),
+
+-- Pacientes 11-20 (2 hospitalizaciones cada uno)
+(11, 11, '2024-02-05 12:30:00', '2024-02-12 11:15:00', 'Hipertensión arterial crisis', 1),
+(11, 17, '2024-07-05 16:25:00', '2024-07-12 09:40:00', 'Accidente cerebrovascular', 5),
+
+(12, 12, '2024-02-08 14:20:00', '2024-02-15 13:45:00', 'Artritis reumatoide aguda', 2),
+(12, 19, '2024-05-15 10:35:00', '2024-05-22 15:20:00', 'Artroplastia de cadera', 6),
+
+(13, 13, '2024-02-10 16:10:00', '2024-02-17 10:20:00', 'Anemia severa', 3),
+(13, 20, '2024-04-18 08:50:00', '2024-04-25 14:35:00', 'Transfusión sanguínea', 7),
+
+(14, 14, '2024-02-12 09:45:00', '2024-02-19 14:30:00', 'Bronquitis crónica', 4),
+(14, 4, '2024-06-25 13:40:00', '2024-07-02 10:55:00', 'EPOC descompensado', 8),
+
+(15, 15, '2024-02-15 11:30:00', '2024-02-22 16:45:00', 'Litiasis renal', 5),
+(15, 6, '2024-05-05 15:20:00', '2024-05-12 12:10:00', 'Cólico nefrítico', 9),
+
+(16, 16, '2024-02-18 13:15:00', '2024-02-25 09:30:00', 'Ulcera péptica', 6),
+(16, 10, '2024-07-12 14:25:00', '2024-07-19 11:50:00', 'Hemorragia digestiva', 10),
+
+(17, 17, '2024-02-20 15:40:00', '2024-02-27 12:15:00', 'Hepatitis viral', 7),
+(17, 12, '2024-06-18 10:05:00', '2024-06-25 16:40:00', 'Cirrosis compensada', 11),
+
+(18, 18, '2024-02-22 08:20:00', '2024-02-29 15:50:00', 'Osteomielitis', 8),
+(18, 14, '2024-04-25 12:35:00', '2024-05-02 09:10:00', 'Artritis séptica', 12),
+
+(19, 19, '2024-02-25 10:35:00', '2024-03-03 11:25:00', 'Meningitis bacteriana', 9),
+(19, 1, '2024-07-20 13:50:00', '2024-07-27 08:35:00', 'Secuelas neurológicas', 13),
+
+(20, 20, '2024-02-28 12:50:00', '2024-03-06 14:40:00', 'Pancreatitis aguda', 10),
+(20, 3, '2024-05-28 09:15:00', '2024-06-04 15:30:00', 'Pseudoguis pancreático', 14),
+
+-- Pacientes 21-30 (2 hospitalizaciones cada uno)
+(21, 1, '2024-03-02 14:15:00', '2024-03-09 10:35:00', 'Trauma craneoencefálico leve', 1),
+(21, 7, '2024-07-08 16:20:00', '2024-07-15 12:45:00', 'Cefalea post-traumática', 5),
+
+(22, 2, '2024-03-05 16:25:00', '2024-03-12 13:20:00', 'Enfermedad pulmonar obstructiva', 2),
+(22, 9, '2024-06-22 08:40:00', '2024-06-29 14:55:00', 'Fibrosis pulmonar', 6),
+
+(23, 3, '2024-03-08 09:40:00', '2024-03-15 15:10:00', 'Diverticulitis', 3),
+(23, 11, '2024-05-12 11:25:00', '2024-05-19 09:50:00', 'Absceso diverticular', 7),
+
+(24, 4, '2024-03-11 11:55:00', '2024-03-18 08:45:00', 'Insuficiencia renal aguda', 4),
+(24, 13, '2024-07-15 10:10:00', '2024-07-22 16:25:00', 'Diálisis peritoneal', 8),
+
+(25, 5, '2024-03-14 13:30:00', '2024-03-21 12:30:00', 'Trombosis venosa profunda', 5),
+(25, 15, '2024-06-10 15:45:00', '2024-06-17 11:20:00', 'Embolia pulmonar', 9),
+
+(26, 6, '2024-03-17 15:45:00', '2024-03-24 14:15:00', 'Sepsis urinaria', 6),
+(26, 17, '2024-08-08 12:30:00', '2024-08-15 09:45:00', 'Control infeccioso', 10),
+
+(27, 7, '2024-03-20 08:10:00', '2024-03-27 16:40:00', 'Infarto agudo de miocardio', 7),
+(27, 19, '2024-07-25 14:55:00', '2024-08-01 11:10:00', 'Rehabilitación cardíaca', 11),
+
+(28, 8, '2024-03-23 10:25:00', '2024-03-30 09:55:00', 'Accidente cerebrovascular', 8),
+(28, 2, '2024-09-05 16:15:00', '2024-09-12 13:40:00', 'Secuelas neurológicas', 12),
+
+(29, 9, '2024-03-26 12:40:00', '2024-04-02 11:05:00', 'Enfermedad de Crohn', 9),
+(29, 4, '2024-08-18 09:20:00', '2024-08-25 15:35:00', 'Control gastroenterológico', 13),
+
+(30, 10, '2024-03-29 14:55:00', '2024-04-05 13:35:00', 'Artrosis severa', 10),
+(30, 6, '2024-07-30 11:45:00', '2024-08-06 14:20:00', 'Artroplastia de rodilla', 14),
+
+-- Pacientes 31-50 (1 hospitalización cada uno)
+(31, 11, '2024-04-01 16:20:00', '2024-04-08 10:50:00', 'Neumonía atípica', 1),
+(32, 12, '2024-04-04 08:35:00', '2024-04-11 15:25:00', 'Fractura de cadera', 2),
+(33, 13, '2024-04-07 10:50:00', '2024-04-14 12:10:00', 'Colelitiasis sintomática', 3),
+(34, 14, '2024-04-10 13:05:00', '2024-04-17 09:40:00', 'Descompensación diabética', 4),
+(35, 15, '2024-04-13 15:20:00', '2024-04-20 14:00:00', 'Peritonitis', 5),
+(36, 16, '2024-04-16 08:45:00', '2024-04-23 16:30:00', 'Embolia pulmonar', 6),
+(37, 17, '2024-04-19 11:00:00', '2024-04-26 10:20:00', 'Cirrosis hepática', 7),
+(38, 18, '2024-04-22 13:15:00', '2024-04-29 12:45:00', 'Osteoporosis con fractura', 8),
+(39, 19, '2024-04-25 15:30:00', '2024-05-02 08:55:00', 'Esclerosis múltiple', 9),
+(40, 20, '2024-04-28 09:55:00', '2024-05-05 15:15:00', 'Lupus eritematoso', 10),
+
+(41, 1, '2024-05-02 12:10:00', '2024-05-09 11:40:00', 'Miastenia gravis', 11),
+(42, 2, '2024-05-05 14:25:00', '2024-05-12 09:10:00', 'Poliartritis', 12),
+(43, 3, '2024-05-08 16:40:00', '2024-05-15 14:50:00', 'Enfisema pulmonar', 13),
+(44, 4, '2024-05-11 09:05:00', '2024-05-18 16:05:00', 'Insuficiencia suprarrenal', 14),
+(45, 5, '2024-05-14 11:20:00', '2024-05-21 10:35:00', 'Tirotoxicosis', 15),
+(46, 6, '2024-05-17 13:35:00', '2024-05-24 12:25:00', 'Enfermedad de Addison', 16),
+(47, 7, '2024-05-20 15:50:00', '2024-05-27 08:15:00', 'Síndrome de Guillain-Barré', 17),
+(48, 8, '2024-05-23 08:15:00', '2024-05-30 15:45:00', 'Poliomielitis', 18),
+(49, 9, '2024-05-26 10:30:00', '2024-06-02 13:55:00', 'Distrofia muscular', 19),
+(50, 10, '2024-05-29 12:45:00', '2024-06-05 11:15:00', 'Esclerodermia', 20),
+
+-- Pacientes 51-70 (1 hospitalización cada uno - algunos actualmente hospitalizados)
+(51, 11, '2024-06-01 14:00:00', NULL, 'Observación post-operatoria', 1),
+(52, 12, '2024-06-03 16:15:00', NULL, 'Control de dolor crónico', 2),
+(53, 13, '2024-06-05 09:30:00', NULL, 'Quimioterapia', 3),
+(54, 14, '2024-06-07 11:45:00', NULL, 'Rehabilitación cardiaca', 4),
+(55, 15, '2024-06-09 14:00:00', NULL, 'Terapia respiratoria', 5),
+(56, 16, '2024-06-11 16:15:00', NULL, 'Desintoxicación', 6),
+(57, 17, '2024-06-13 09:30:00', NULL, 'Cuidados paliativos', 7),
+(58, 18, '2024-06-15 11:45:00', NULL, 'Nutrición parenteral', 8),
+(59, 19, '2024-06-17 14:00:00', NULL, 'Aislamiento respiratorio', 9),
+(60, 20, '2024-06-19 16:15:00', NULL, 'Control post-infarto', 10),
+
+(61, 1, '2024-06-21 09:30:00', '2024-06-28 12:45:00', 'Amigdalitis aguda', 11),
+(62, 2, '2024-06-23 11:45:00', '2024-06-30 14:20:00', 'Sinusitis crónica', 12),
+(63, 3, '2024-06-25 14:00:00', '2024-07-02 10:35:00', 'Otitis media', 13),
+(64, 4, '2024-06-27 16:15:00', '2024-07-04 13:50:00', 'Conjuntivitis bacteriana', 14),
+(65, 5, '2024-06-29 08:30:00', '2024-07-06 15:05:00', 'Dermatitis de contacto', 15),
+(66, 6, '2024-07-01 10:45:00', '2024-07-08 11:20:00', 'Urticaria aguda', 16),
+(67, 7, '2024-07-03 13:00:00', '2024-07-10 09:35:00', 'Absceso cutáneo', 17),
+(68, 8, '2024-07-05 15:15:00', '2024-07-12 14:50:00', 'Celulitis', 18),
+(69, 9, '2024-07-07 08:40:00', '2024-07-14 16:25:00', 'Lumbalgia aguda', 19),
+(70, 10, '2024-07-09 10:55:00', '2024-07-16 12:10:00', 'Cervicalgia', 20),
+
+-- Pacientes 71-98 (1 hospitalización cada uno)
+(71, 11, '2024-07-11 13:10:00', '2024-07-18 10:45:00', 'Esguince de tobillo', 1),
+(72, 12, '2024-07-13 15:25:00', '2024-07-20 14:00:00', 'Luxación de hombro', 2),
+(73, 13, '2024-07-15 08:50:00', '2024-07-22 16:35:00', 'Fractura de radio', 3),
+(74, 14, '2024-07-17 11:05:00', '2024-07-24 09:20:00', 'Contractura muscular', 4),
+(75, 15, '2024-07-19 13:20:00', '2024-07-26 15:55:00', 'Tendinitis', 5),
+(76, 16, '2024-07-21 15:35:00', '2024-07-28 12:30:00', 'Bursitis', 6),
+(77, 17, '2024-07-23 09:00:00', '2024-07-30 14:45:00', 'Síndrome del túnel carpiano', 7),
+(78, 18, '2024-07-25 11:15:00', '2024-08-01 10:10:00', 'Fascitis plantar', 8),
+(79, 19, '2024-07-27 13:30:00', '2024-08-03 16:25:00', 'Epicondilitis', 9),
+(80, 20, '2024-07-29 15:45:00', '2024-08-05 08:40:00', 'Tenosinovitis', 10),
+
+(81, 1, '2024-08-01 08:00:00', NULL, 'Post-operatorio cirugía mayor', 11),
+(82, 2, '2024-08-02 10:30:00', NULL, 'Control de marcapasos', 12),
+(83, 3, '2024-08-03 13:00:00', NULL, 'Monitorización cardiaca', 13),
+(84, 4, '2024-08-04 15:30:00', NULL, 'Terapia intensiva', 14),
+(85, 5, '2024-08-05 09:00:00', NULL, 'Ventilación mecánica', 15),
+(86, 6, '2024-08-06 11:30:00', NULL, 'Hemodiálisis', 16),
+(87, 7, '2024-08-07 14:00:00', NULL, 'Nutrición enteral', 17),
+(88, 8, '2024-08-08 16:30:00', NULL, 'Rehabilitación neurológica', 18),
+(89, 9, '2024-08-09 08:30:00', NULL, 'Cuidados intensivos neonatales', 19),
+(90, 10, '2024-08-10 11:00:00', NULL, 'Aislamiento de contacto', 20),
+
+(91, 11, '2024-08-11 13:30:00', '2024-08-18 10:15:00', 'Varicela complicada', 1),
+(92, 12, '2024-08-12 16:00:00', '2024-08-19 14:45:00', 'Paperas con complicaciones', 2),
+(93, 13, '2024-08-13 08:45:00', '2024-08-20 16:30:00', 'Rubéola en adulto', 3),
+(94, 14, '2024-08-14 11:15:00', '2024-08-21 09:00:00', 'Sarampión importado', 4),
+(95, 15, '2024-08-15 13:45:00', '2024-08-22 15:20:00', 'Dengue hemorrágico', 5),
+(96, 16, '2024-08-16 16:15:00', '2024-08-23 12:50:00', 'Zika con complicaciones', 6),
+(97, 17, '2024-08-17 09:30:00', '2024-08-24 14:15:00', 'Chikungunya severo', 7),
+(98, 18, '2024-08-18 12:00:00', '2024-08-25 10:35:00', 'Fiebre tifoidea', 8);
 
 ALTER SEQUENCE paciente_id_paciente_seq RESTART WITH 1;
 
@@ -289,8 +440,144 @@ INSERT INTO telefono (id_tipo_telefono, id_paciente, id_medico, numero, observac
 
 ALTER SEQUENCE telefono_id_telefono_seq RESTART WITH 1;
 
--- INGRESOS A CUARTOS
--- [Aquí irían las inserciones de ingreso_cuarto...]
+TRUNCATE TABLE ingreso_cuarto CASCADE;
+ALTER SEQUENCE ingreso_cuarto_id_ingreso_cuarto_seq RESTART WITH 1;
+
+-- 61 pacientes con 1 ingreso (Pacientes 1-61)
+INSERT INTO ingreso_cuarto (id_paciente, id_cuarto, fecha_ingreso, fecha_salida, motivo_ingreso, id_medico_responsable) VALUES
+(1,1,'2024-01-10 10:00','2024-01-15 12:00','Fiebre alta',1),
+(2,2,'2024-02-01 09:00','2024-02-05 11:00','Trauma leve',2),
+(3,3,'2024-03-05 08:30','2024-03-10 10:00','Observación pediátrica',11),
+(4,4,'2024-04-12 14:00','2024-04-14 09:00','Deshidratación',12),
+(5,5,'2024-05-20 16:00','2024-05-23 08:00','Cirugía ambulatoria',5),
+(6,6,'2024-06-01 07:00','2024-06-05 10:00','Control',6),
+(7,7,'2024-07-10 12:00','2024-07-12 09:00','Fractura',5),
+(8,8,'2024-08-21 11:00','2024-08-27 13:00','Asma',7),
+(9,9,'2024-09-11 09:20','2024-09-15 15:00','Infección',3),
+(10,10,'2024-10-01 10:00','2024-10-05 18:00','Control',4),
+(11,11,'2024-01-15 09:00','2024-01-20 12:00','Observación',8),
+(12,12,'2024-02-10 10:30','2024-02-12 11:00','Dolor abdominal',9),
+(13,13,'2024-03-20 13:00','2024-03-30 10:00','Cirugía mayor',10),
+(14,14,'2024-04-05 08:00','2024-04-07 09:00','Control',2),
+(15,15,'2024-05-12 09:30','2024-05-15 11:00','Infección',1),
+(16,16,'2024-06-18 14:00','2024-06-22 10:00','Trauma',5),
+(17,17,'2024-07-23 07:30','2024-07-28 12:00','Observación',6),
+(18,18,'2024-08-01 11:00','2024-08-03 08:00','Control',7),
+(19,19,'2024-09-09 12:00','2024-09-13 09:00','Pediatría',11),
+(20,20,'2024-10-10 10:00','2024-10-12 10:00','Consulta',12),
+(21,1,'2024-01-02 09:00','2024-01-04 10:00','Dolor',3),
+(22,2,'2024-02-03 08:30','2024-02-06 11:00','Observación',4),
+(23,3,'2024-03-07 09:00','2024-03-09 09:30','Asma',7),
+(24,4,'2024-04-08 13:00','2024-04-10 12:00','Control',6),
+(25,5,'2024-05-09 15:00','2024-05-12 09:00','Dolor abdominal',9),
+(26,6,'2024-06-11 10:00','2024-06-15 08:00','Fractura',5),
+(27,7,'2024-07-14 11:00','2024-07-16 07:00','Infección',3),
+(28,8,'2024-08-17 12:00','2024-08-20 09:00','Observación',2),
+(29,9,'2024-09-19 07:40','2024-09-21 10:00','Control',1),
+(30,10,'2024-10-21 09:20','2024-10-25 14:00','Cirugía',10),
+(31,11,'2024-01-25 08:00','2024-01-28 11:00','Observación',8),
+(32,12,'2024-02-28 10:00','2024-03-02 09:00','Control',9),
+(33,13,'2024-03-30 12:00','2024-04-02 09:00','Dolor',4),
+(34,14,'2024-04-12 11:00','2024-04-15 10:00','Pediatría',11),
+(35,15,'2024-05-18 09:00','2024-05-20 08:00','Infección',3),
+(36,16,'2024-06-20 14:00','2024-06-24 12:00','Trauma',5),
+(37,17,'2024-07-22 13:00','2024-07-26 09:00','Observación',6),
+(38,18,'2024-08-24 10:00','2024-08-27 11:00','Control',7),
+(39,19,'2024-09-26 09:00','2024-09-30 08:00','Cirugía',10),
+(40,20,'2024-10-28 08:30','2024-11-02 10:00','Dolor',2),
+(41,1,'2024-01-30 10:00','2024-02-03 09:00','Observación',1),
+(42,2,'2024-02-14 09:00','2024-02-18 11:00','Infección',3),
+(43,3,'2024-03-16 08:00','2024-03-19 09:00','Fractura',5),
+(44,4,'2024-04-18 12:00','2024-04-20 10:00','Asma',7),
+(45,5,'2024-05-20 07:00','2024-05-22 08:00','Control',6),
+(46,6,'2024-06-22 11:00','2024-06-25 09:00','Dolor abdominal',9),
+(47,7,'2024-07-24 09:30','2024-07-27 10:00','Observación',8),
+(48,8,'2024-08-26 10:30','2024-08-29 12:00','Infección',3),
+(49,9,'2024-09-28 13:00','2024-10-01 09:00','Cirugía',10),
+(50,10,'2024-10-30 08:00','2024-11-03 07:00','Control',4),
+(51,11,'2024-01-05 09:00','2024-01-07 09:00','Dolor',2),
+(52,12,'2024-02-06 11:00','2024-02-09 08:00','Trauma',5),
+(53,13,'2024-03-08 07:00','2024-03-12 10:00','Observación',6),
+(54,14,'2024-04-09 09:00','2024-04-11 10:00','Asma',7),
+(55,15,'2024-05-10 10:00','2024-05-13 09:00','Infección',3),
+(56,16,'2024-06-11 08:00','2024-06-15 11:00','Fractura',5),
+(57,17,'2024-07-12 12:00','2024-07-15 09:00','Control',6),
+(58,18,'2024-08-13 09:00','2024-08-16 10:00','Observación',8),
+(59,19,'2024-09-14 11:00','2024-09-17 09:00','Cirugía',10),
+(60,20,'2024-10-15 08:00','2024-10-20 12:00','Dolor',1),
+(61,1,'2024-11-01 09:00','2024-11-04 09:00','Control',2);
+
+-- 10 pacientes con 2 hospitalizaciones cada uno (Pacientes 62-71)
+INSERT INTO ingreso_cuarto (id_paciente, id_cuarto, fecha_ingreso, fecha_salida, motivo_ingreso, id_medico_responsable) VALUES
+(62,2,'2023-12-01 09:00','2023-12-05 10:00','Observación',3),
+(62,3,'2024-02-01 08:00','2024-02-04 09:00','Control',4),
+(63,4,'2024-01-10 10:00','2024-01-14 11:00','Fractura',5),
+(63,5,'2024-03-20 09:00','2024-03-24 12:00','Control',6),
+(64,6,'2024-04-01 09:30','2024-04-06 10:00','Cirugía',10),
+(64,7,'2024-06-10 08:00','2024-06-14 09:00','Observación',8),
+(65,8,'2024-05-05 11:00','2024-05-10 12:00','Infección',3),
+(65,9,'2024-09-01 09:00','2024-09-05 10:00','Control',2),
+(66,10,'2024-07-07 10:00','2024-07-11 11:00','Dolor',1),
+(66,11,'2024-08-08 12:00','2024-08-12 09:00','Control',4),
+(67,12,'2024-02-14 09:00','2024-02-18 10:00','Trauma',5),
+(67,13,'2024-03-14 07:00','2024-03-18 09:00','Control',6),
+(68,14,'2024-04-20 08:00','2024-04-25 10:00','Cirugía',10),
+(68,15,'2024-06-22 09:00','2024-06-26 11:00','Observación',8),
+(69,16,'2024-05-02 09:00','2024-05-06 09:00','Infección',3),
+(69,17,'2024-07-02 10:00','2024-07-06 12:00','Control',2),
+(70,18,'2024-08-03 08:00','2024-08-07 09:00','Asma',7),
+(70,19,'2024-09-04 11:00','2024-09-08 10:00','Control',1),
+(71,20,'2024-10-05 09:00','2024-10-09 09:00','Dolor',4),
+(71,1,'2024-11-06 09:30','2024-11-10 10:30','Control',3);
+
+-- 5 pacientes con 3 hospitalizaciones cada uno (Pacientes 72-76)
+INSERT INTO ingreso_cuarto (id_paciente, id_cuarto, fecha_ingreso, fecha_salida, motivo_ingreso, id_medico_responsable) VALUES
+(72,2,'2023-11-01 09:00','2023-11-04 10:00','Observación',5),
+(72,3,'2024-01-02 08:00','2024-01-05 09:00','Control',6),
+(72,4,'2024-03-03 09:00','2024-03-06 10:00','Cirugía',10),
+(73,5,'2023-12-10 10:00','2023-12-14 11:00','Fractura',5),
+(73,6,'2024-02-12 09:00','2024-02-16 12:00','Control',2),
+(73,7,'2024-04-14 08:00','2024-04-18 09:00','Observación',3),
+(74,8,'2023-10-15 11:00','2023-10-20 12:00','Infección',4),
+(74,9,'2024-01-20 09:00','2024-01-24 10:00','Control',6),
+(74,10,'2024-03-22 10:00','2024-03-26 11:00','Cirugía',10),
+(75,11,'2023-09-05 09:00','2023-09-07 09:00','Asma',7),
+(75,12,'2024-02-08 08:00','2024-02-12 09:00','Control',1),
+(75,13,'2024-05-10 10:00','2024-05-14 10:00','Observación',8),
+(76,14,'2023-08-01 10:00','2023-08-04 10:00','Fractura',5),
+(76,15,'2024-02-15 09:00','2024-02-19 09:00','Control',4),
+(76,16,'2024-06-20 08:00','2024-06-24 09:00','Cirugía',10);
+
+-- 1 paciente con 4 hospitalizaciones (Paciente 77)
+INSERT INTO ingreso_cuarto (id_paciente, id_cuarto, fecha_ingreso, fecha_salida, motivo_ingreso, id_medico_responsable) VALUES
+(77,17,'2022-01-01 09:00','2022-01-05 10:00','Control prolongado',2),
+(77,18,'2022-06-01 09:00','2022-06-05 09:00','Revisión',3),
+(77,19,'2023-03-01 08:00','2023-03-10 09:00','Tratamiento',4),
+(77,20,'2024-11-01 10:00',NULL,'Ingreso actual',5);
+
+-- 21 pacientes restantes con 1 hospitalización cada uno (Pacientes 78-98)
+INSERT INTO ingreso_cuarto (id_paciente, id_cuarto, fecha_ingreso, fecha_salida, motivo_ingreso, id_medico_responsable) VALUES
+(78,1,'2024-01-08 14:00','2024-01-12 11:00','Hipertensión',7),
+(79,2,'2024-02-15 10:30','2024-02-20 09:00','Diabetes',8),
+(80,3,'2024-03-22 08:45','2024-03-27 14:00','Artritis',9),
+(81,4,'2024-04-10 11:20','2024-04-15 16:30','Migraña',10),
+(82,5,'2024-05-05 13:15','2024-05-10 10:45','Alergia',11),
+(83,6,'2024-06-18 09:30','2024-06-23 12:15','Ansiedad',12),
+(84,7,'2024-07-25 16:00','2024-07-30 08:20','Depresión',13),
+(85,8,'2024-08-12 07:45','2024-08-17 15:10','Insomnio',14),
+(86,9,'2024-09-03 12:30','2024-09-08 11:25','Obesidad',15),
+(87,10,'2024-10-20 14:45','2024-10-25 09:35','Anemia',16),
+(88,11,'2024-11-07 10:10','2024-11-12 13:50','Asma',17),
+(89,12,'2024-12-14 08:20','2024-12-19 16:40','Bronquitis',18),
+(90,13,'2024-01-25 15:30','2024-01-30 10:15','Neumonía',19),
+(91,14,'2024-02-28 11:40','2024-03-04 14:25','Sinusitis',20),
+(92,15,'2024-03-15 09:55','2024-03-20 12:05','Rinitis',1),
+(93,16,'2024-04-22 13:20','2024-04-27 08:45','Conjuntivitis',2),
+(94,17,'2024-05-30 16:35','2024-06-04 11:30','Dermatitis',3),
+(95,18,'2024-06-08 07:50','2024-06-13 15:55','Psoriasis',4),
+(96,19,'2024-07-19 12:05','2024-07-24 09:40','Acné',5),
+(97,20,'2024-08-26 14:50','2024-08-31 13:15','Urticaria',6),
+(98,1,'2024-09-11 10:25','2024-09-16 16:20','Alopecia',7);
 
 -- VISITAS MÉDICAS
 INSERT INTO visita_medica (id_paciente, id_medico, fecha, notas, diagnostico_id) VALUES
@@ -319,6 +606,70 @@ INSERT INTO prescripcion (id_visita_medica, fecha_prescripcion, observaciones) V
 (8,'2024-08-22','Broncodilatador'),
 (9,'2024-09-12','Antibiótico'),
 (10,'2024-10-02','Analítica');
+
+-- Telefono
+TRUNCATE TABLE telefono CASCADE;
+ALTER SEQUENCE telefono_id_telefono_seq RESTART WITH 1;
+
+-- Insertar teléfonos para pacientes (usando IDs 1-10 que sabemos existen)
+INSERT INTO telefono (id_tipo_telefono, id_paciente, id_medico, numero, observacion) VALUES
+(1,1,NULL,'3105001001','Teléfono principal'),
+(1,2,NULL,'3105001002','Contacto directo'),
+(1,3,NULL,'3105001003','Teléfono celular'),
+(1,4,NULL,'3105001004','Número personal'),
+(1,5,NULL,'3105001005','Comunicación preferida'),
+(1,6,NULL,'3105001006','Teléfono de casa'),
+(1,7,NULL,'3105001007','Contacto emergencia'),
+(1,8,NULL,'3105001008','Número secundario'),
+(1,9,NULL,'3105001009','Teléfono trabajo'),
+(1,10,NULL,'3105001010','Comunicación familiar');
+
+-- Insertar teléfonos para médicos (usando IDs 1-10 que sabemos existen)
+INSERT INTO telefono (id_tipo_telefono, id_paciente, id_medico, numero, observacion) VALUES
+(1,NULL,1,'3106001001','Consultorio principal'),
+(1,NULL,2,'3106001002','Urgencias'),
+(2,NULL,3,'6046003001','Fijo consultorio'),
+(1,NULL,4,'3106001004','Celular personal'),
+(1,NULL,5,'3106001005','Contacto directo'),
+(2,NULL,6,'6046003002','Fijo hospital'),
+(1,NULL,7,'3106001007','Guardia médica'),
+(1,NULL,8,'3106001008','Emergencias 24h'),
+(2,NULL,9,'6046003003','Consultorio fijo'),
+(1,NULL,10,'3106001010','Coordinación citas');
+
+-- Insertar teléfonos de emergencia para pacientes
+INSERT INTO telefono (id_tipo_telefono, id_paciente, id_medico, numero, observacion) VALUES
+(3,1,NULL,'3107001001','Contacto emergencia familiar'),
+(3,2,NULL,'3107001002','Emergencias 24/7'),
+(3,3,NULL,'3107001003','Familiar directo'),
+(3,4,NULL,'3107001004','Contacto urgente'),
+(3,5,NULL,'3107001005','Emergencia médica'),
+(3,6,NULL,'3107001006','Familiar responsable'),
+(3,7,NULL,'3107001007','Contacto prioritario'),
+(3,8,NULL,'3107001008','Emergencia familiar'),
+(3,9,NULL,'3107001009','Contacto inmediato'),
+(3,10,NULL,'3107001010','Urgencias');
+
+-- Insertar teléfonos fijos para pacientes
+INSERT INTO telefono (id_tipo_telefono, id_paciente, id_medico, numero, observacion) VALUES
+(2,11,NULL,'6045002001','Teléfono fijo casa'),
+(2,12,NULL,'6045002002','Línea residencial'),
+(2,13,NULL,'6045002003','Fijo principal'),
+(2,14,NULL,'6045002004','Casa familiar'),
+(2,15,NULL,'6045002005','Teléfono hogar');
+
+-- Insertar teléfonos para médicos especialistas
+INSERT INTO telefono (id_tipo_telefono, id_paciente, id_medico, numero, observacion) VALUES
+(1,NULL,11,'3106002011','Cardiología'),
+(1,NULL,12,'3106002012','Pediatría'),
+(2,NULL,13,'6046003013','Traumatología fijo'),
+(1,NULL,14,'3106002014','Ginecología'),
+(1,NULL,15,'3106002015','Neurología'),
+(2,NULL,16,'6046003016','Dermatología fijo'),
+(1,NULL,17,'3106002017','Oftalmología'),
+(1,NULL,18,'3106002018','Ortopedia'),
+(2,NULL,19,'6046003019','Psiquiatría fijo'),
+(1,NULL,20,'3106002020','Oncología');
 
 ALTER SEQUENCE prescripcion_id_prescripcion_seq RESTART WITH 1;
 
